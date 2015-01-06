@@ -1,0 +1,16 @@
+template(name="layout")
+	nav.navbar.navbar-default(role="navigation")
+		.navbar-header
+			.navbar-brand Tickets
+		div
+			if currentUser
+				button.btn.btn-default.navbar-btn(type="button" name="insert") Insert
+				button.btn.btn-default.navbar-btn(type="button" name="skip") Skip
+				button.btn.btn-default.navbar-btn(type="button" name="results") Results
+			.nav.navbar-nav.navbar-right
+				.btn-group
+					button.btn.btn-default.navbar-btn(type="button" name="en") ENG
+					button.btn.btn-default.navbar-btn(type="button" name="et") EST
+				| {{> loginButtons}}
+	.content
+		+yield
