@@ -3,7 +3,7 @@ Template.create.events({
 		e.preventDefault()
 		var name = $('form[name="create"] input[name="name"]').val()
 		var userId = Meteor.userId()
-		Sessions.insert({_id: name, admin: userId, current: {students: []}})
+		Sessions.insert({_id: name, admin: userId, current: {students: {}}})
 		window.location.replace(name)
 	}
 })
