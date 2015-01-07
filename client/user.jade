@@ -3,10 +3,10 @@ template(name="user")
 		.col-sm-12
 			if isQueued
 				form(name="cancel-queue")
-					input.btn.btn-default(type="submit" value="{{T 'cancel'}}")
+					input.btn.btn-default.btn-danger.btn-lg(type="submit" value="{{T 'cancel'}}")
 			else
 				form(name="queue")
-					input.btn.btn-default(type="submit" value="{{T 'answer'}}")
+					input.btn.btn-default.btn-success.btn-lg(type="submit" value="{{T 'answer'}}")
 	.row
 		.col-sm-12
 			h1 {{points}}
