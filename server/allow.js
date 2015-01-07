@@ -6,8 +6,11 @@ Sessions.allow({
 		if (!userId)
 			return false
 
+		// If user is admin
+		if (userId == doc.admin)
+			return true
+
 		// If changing ones own data
-		console.log(modify)
 		if ('students.'+userId+'.queue' in modify['$set'])
 			return true
 	}

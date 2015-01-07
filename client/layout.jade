@@ -4,28 +4,57 @@ template(name="layout")
 			.navbar-brand Tickets
 		div
 			if isAdmin
+				button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="settings" data-toggle="modal" data-target="#settings") {{T "settings"}}
+				button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="insert" data-toggle="modal" data-target="#insert") {{T "insert"}}
+				button.btn.btn-default.navbar-btn(type="button" name="skip") {{T "skip"}}
 				.btn-group
-					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="settings" data-toggle="dropdown") Settings<span class="caret"></span>
-					ul.dropdown-menu(role="menu")
-						li Tere
-						li Tere
-						li Tere
-				.btn-group
-					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="insert" data-toggle="dropdown") Insert<span class="caret"></span>
-					ul.dropdown-menu(role="menu")
-						li Tere
-						li Tere
-						li Tere
-				button.btn.btn-default.navbar-btn(type="button" name="skip") Skip
-				.btn-group
-					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="results" data-toggle="dropdown") Results<span class="caret"></span>
-					ul.dropdown-menu(role="menu")
-						each students
-							p {{name}}: {{points}} ({{questionsAnswered}})
+					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="results" data-toggle="modal" data-target="#results") {{T "results"}}
 			.nav.navbar-nav.navbar-right
 				.btn-group
 					button.btn.btn-default.navbar-btn(type="button" name="en") ENG
 					button.btn.btn-default.navbar-btn(type="button" name="et") EST
 				| {{> loginButtons}}
+			.modal.fade#results(tabindex="-1" role="dialog" aria-labelledby="results" aria-hidden="true")
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button" data-dismiss="modal" aria-hidden="true") X
+							h3.modal-title#modalLabel {{T "results"}}
+						.modal-body
+							each students
+								p {{name}}: {{points}} ({{questionsAnswered}})
+			.modal.fade#settings(tabindex="-1" role="dialog" aria-labelledby="settings" aria-hidden="true")
+				.modal-dialog
+					.modal-content
+						with settings
+							form(name="settings")
+								.modal-header
+									button.close(type="button" data-dismiss="modal" aria-hidden="true") X
+									h3.modal-title#modalLabel {{T "settings"}}
+								.modal-body
+									.row
+										.col-sm-8
+											label(for="maxQuestions") Mitu küsimust saab üks õpilane vastata?
+										.col-sm-4
+											input.form-control#maxQuestions(type="text" name="maxQuestions" value="{{maxQuestions}}")
+									.row
+										.col-sm-8
+											label(for="dropPoints") Mitu punkti langeb küsimuse väärtus, kui see õigesti vastatakse?
+										.col-sm-4
+											input.form-control#dropPoints(type="text" name="dropPoints" value="{{dropPoints}}")
+								.modal-footer
+									button.btn.btn-default(type="button" data-dismiss="modal" aria-hidden="true") {{T "cancel"}}
+									button.btn.btn-primary(type="submit" aria-hidden="true") {{T "save"}}
+			.modal.fade#insert(tabindex="-1" role="dialog" aria-labelledby="insert" aria-hidden="true")
+				.modal-dialog
+					.modal-content
+						form(name="insert")
+							.modal-header
+								button.close(type="button" data-dismiss="modal" aria-hidden="true") X
+								h3.modal-title#modalLabel {{T "insert"}}
+							.modal-body
+							.modal-footer
+								button.btn.btn-default(type="button" data-dismiss="modal" aria-hidden="true") {{T "cancel"}}
+								button.btn.btn-primary(type="submit" aria-hidden="true") {{T "save"}}
 	.content
 		+yield
