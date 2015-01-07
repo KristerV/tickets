@@ -54,7 +54,7 @@ template(name="layout")
 								h3.modal-title#modalLabel {{T "insert"}}
 							.modal-body
 								label(for="question_contents") {{T "question_contents"}}
-								textarea#question_contents.form-control
+								textarea#question_contents.form-control(name="question")
 								.row
 									.col-sm-8
 										label(for="maxPoints") Maksimaalsed punktid

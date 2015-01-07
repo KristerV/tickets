@@ -17,5 +17,8 @@ Template.admin.helpers({
 		queue.sort(function(a, b) {return a['queue'] - b['queue']})
 
 		return queue
+	},
+	questionObject: function() {
+		return !!Session.get('question') ? Session.get('question') : {question: T("no_question"), points: 0, _id: null}
 	}
 })

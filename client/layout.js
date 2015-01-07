@@ -28,6 +28,31 @@ Template.layout.events({
 		var lang = e.currentTarget.name
 		Session.set('language', lang)
 	},
+	'click .btn[name="skip"]': function(e, tmpl) {
+		
+		// Get all the questions
+		var session = Sessions.findOne(Session.get('session'))
+		if (!session)
+			return false
+		var questions = session.questions
+		var total = _.size(questions)
+
+		// Get random question
+		var rand = G.generateRandom(1, total) - 1
+		var randKey = _.keys(questions)[rand]
+		var randQuestion = questions[randKey]
+		console.log(randQuestion)
+
+		// Calculate needed values
+		var q = {}
+		q['_id'] = randKey
+		var currentPoints = randQuestion.maxPoints - (randQuestion.correctAnswers * session.settings.dropPoints)
+		q['points'] = Math.max(randQuestion.minPoints, currentPoints)
+		q['question'] = randQuestion.question
+
+		// Use the question
+		Session.set('question', q)
+	},
 	'submit form[name="settings"]': function(e, tmpl) {
 		e.preventDefault()
 		var values = G.getFormValues('settings')

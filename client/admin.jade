@@ -4,4 +4,7 @@ template(name="admin")
 			each queue
 				p {{name}}
 		.col-sm-9
-			p mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. mingi mega küsimus. 
+			with questionObject
+				.question(id="{{_id}}")
+					p {{question}}
+					h1 {{T "points"}}: {{points}}
