@@ -20,9 +20,8 @@ template(name="layout")
 				.btn-group
 					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="results" data-toggle="dropdown") Results<span class="caret"></span>
 					ul.dropdown-menu(role="menu")
-						li Tere
-						li Tere
-						li Tere
+						each students
+							p {{name}}: {{points}} ({{questionsAnswered}})
 			.nav.navbar-nav.navbar-right
 				.btn-group
 					button.btn.btn-default.navbar-btn(type="button" name="en") ENG
