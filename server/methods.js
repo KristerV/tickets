@@ -10,8 +10,7 @@ Meteor.methods({
 		if (!session) {
 			var user = Meteor.users.findOne(userId)
 			var set = {}
-			set['current.students.' + userId] = {name: user.username, points: 0, queue: 0}
-			console.log(set)
+			set['current.students.' + userId] = {name: user.username, points: 0, queue: 0, questionsAnswered: 0}
 			Sessions.update(sessionId, {$set: set})
 		}
 	}
