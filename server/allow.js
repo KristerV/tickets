@@ -8,7 +8,7 @@ Sessions.allow({
 
 		// If changing ones own data
 		console.log(modify)
-		if ('current.students.'+userId+'.queue' in modify['$set'])
+		if ('students.'+userId+'.queue' in modify['$set'])
 			return true
 	}
 });
