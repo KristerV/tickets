@@ -4,6 +4,12 @@ Template.user.helpers({
 		if (!session)
 			return false
 		return session.current.students[Meteor.userId()].points
+	},
+	isQueued: function() {
+		var session = Sessions.findOne(Session.get('session'))
+		if (!session)
+			return false
+		return session.current.students[Meteor.userId()].queue > 0
 	}
 })
 
@@ -13,5 +19,11 @@ Template.user.events({
 		var set = {}
 		set['current.students.' + Meteor.userId() + '.queue'] = TimeSync.serverTime()
 		Sessions.update(Session.get('session'), {$set: set})
-	}
+	},
+	'submit form[name="cancel-queue"]': function(e, tmpl) {
+		e.preventDefault()
+		var set = {}
+		set['current.students.' + Meteor.userId() + '.queue'] = 0
+		Sessions.update(Session.get('session'), {$set: set})
+	},
 })

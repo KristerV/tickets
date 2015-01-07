@@ -12,6 +12,10 @@ Template.admin.helpers({
 				queue.push(value)
 			}
 		})
+
+		// Sort by timestamp
+		queue.sort(function(a, b) {return a['queue'] - b['queue']})
+
 		return queue
 	}
 })
