@@ -10,7 +10,7 @@ Template.create.events({
 				settings: {
 					maxQuestions: 1, 
 					dropPoints: 1},
-				questions: [],
+				questions: {},
 				})
 		window.location.replace(name)
 	}
