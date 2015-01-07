@@ -3,7 +3,7 @@ template(name="layout")
 		.navbar-header
 			.navbar-brand Tickets
 		div
-			if currentUser
+			if isAdmin
 				button.btn.btn-default.navbar-btn(type="button" name="insert") Insert
 				button.btn.btn-default.navbar-btn(type="button" name="skip") Skip
 				button.btn.btn-default.navbar-btn(type="button" name="results") Results
