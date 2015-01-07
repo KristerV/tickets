@@ -11,7 +11,11 @@ Sessions.allow({
 			return true
 
 		// If changing ones own data
-		if ('students.'+userId+'.queue' in modify['$set'])
-			return true
+		if ('students.'+userId+'.queue' in modify['$set']) {
+
+			// Only allow queuing if student has not exeeded allowed answers total
+			if (doc.students[userId].questionsAnswered < doc.settings.maxQuestions)
+				return true
+		}
 	}
 });

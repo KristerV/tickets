@@ -1,12 +1,15 @@
 template(name="user")
 	.row
 		.col-sm-12
-			if isQueued
-				form(name="cancel-queue")
-					input.btn.btn-default.btn-danger.btn-lg(type="submit" value="{{T 'cancel'}}")
+			if isAllowed
+				if isQueued
+					form(name="cancel-queue")
+						input.btn.btn-default.btn-danger.btn-lg(type="submit" value="{{T 'cancel'}}")
+				else
+					form(name="queue")
+						input.btn.btn-default.btn-success.btn-lg(type="submit" value="{{T 'answer'}}")
 			else
-				form(name="queue")
-					input.btn.btn-default.btn-success.btn-lg(type="submit" value="{{T 'answer'}}")
+				p {{T "answer_limit_reached"}}
 	.row
 		.col-sm-12
 			h1 {{points}}

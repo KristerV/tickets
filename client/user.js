@@ -10,6 +10,16 @@ Template.user.helpers({
 		if (!session)
 			return false
 		return session.students[Meteor.userId()].queue > 0
+	},
+	isAllowed: function() {
+		var session = Sessions.findOne(Session.get('session'))
+		if (!session)
+			return false
+
+		var maxAnswers = session.settings.maxQuestions
+		var userAnswers = session.students[Meteor.userId()].questionsAnswered
+		if (maxAnswers > userAnswers)
+			return true
 	}
 })
 
