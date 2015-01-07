@@ -1,6 +1,8 @@
 Template.layout.helpers({
 	isAdmin: function() {
 		var session = Sessions.findOne(Session.get('session'))
+		if (!session)
+			return false
 		return Meteor.user() && session.admin == Meteor.userId()
 	}
 })
