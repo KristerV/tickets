@@ -4,9 +4,25 @@ template(name="layout")
 			.navbar-brand Tickets
 		div
 			if isAdmin
-				button.btn.btn-default.navbar-btn(type="button" name="insert") Insert
+				.btn-group
+					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="settings" data-toggle="dropdown") Settings<span class="caret"></span>
+					ul.dropdown-menu(role="menu")
+						li Tere
+						li Tere
+						li Tere
+				.btn-group
+					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="insert" data-toggle="dropdown") Insert<span class="caret"></span>
+					ul.dropdown-menu(role="menu")
+						li Tere
+						li Tere
+						li Tere
 				button.btn.btn-default.navbar-btn(type="button" name="skip") Skip
-				button.btn.btn-default.navbar-btn(type="button" name="results") Results
+				.btn-group
+					button.btn.btn-default.navbar-btn.dropdown-toggle(type="button" name="results" data-toggle="dropdown") Results<span class="caret"></span>
+					ul.dropdown-menu(role="menu")
+						li Tere
+						li Tere
+						li Tere
 			.nav.navbar-nav.navbar-right
 				.btn-group
 					button.btn.btn-default.navbar-btn(type="button" name="en") ENG
