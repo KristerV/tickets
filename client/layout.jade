@@ -53,6 +53,19 @@ template(name="layout")
 								button.close(type="button" data-dismiss="modal" aria-hidden="true") X
 								h3.modal-title#modalLabel {{T "insert"}}
 							.modal-body
+								label(for="question_contents") {{T "question_contents"}}
+								textarea#question_contents.form-control
+								.row
+									.col-sm-8
+										label(for="maxPoints") Maksimaalsed punktid
+									.col-sm-4
+										input.form-control#maxPoints(type="text" name="maxPoints" value="{{maxPoints}}")
+								.row
+									.col-sm-8
+										label(for="minPoints") Minimaalsed punktid
+									.col-sm-4
+										input.form-control#minPoints(type="text" name="minPoints" value="{{minPoints}}")
+
 							.modal-footer
 								button.btn.btn-default(type="button" data-dismiss="modal" aria-hidden="true") {{T "cancel"}}
 								button.btn.btn-primary(type="submit" aria-hidden="true") {{T "save"}}

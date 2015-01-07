@@ -33,5 +33,13 @@ Template.layout.events({
 		var values = G.getFormValues('settings')
 		Sessions.update(Session.get('session'), {$set: {settings: values}})
 		$('#settings').modal('hide')
-	}
+	},
+	'submit form[name="insert"]': function(e, tmpl) {
+		e.preventDefault()
+		var values = G.getFormValues('insert')
+		values['_id'] = G.generateHash()
+		Sessions.update(Session.get('session'), {$push: {questions: values}})
+		$("form[name='insert'] input[type=text], form[name='insert'] textarea").val("")
+		$('#insert').modal('hide')
+	},
 })
