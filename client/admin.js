@@ -24,12 +24,13 @@ Template.admin.helpers({
 
 Template.admin.events({
 	'click .queue-box button[name="incorrect"]': function(e, tmpl) {
-		C.incorrectAnswer()
-		C.nextAnswerer()
+		if (C.incorrectAnswer())
+			C.nextAnswerer()
 	},
 	'click .queue-box button[name="correct"]': function(e, tmpl) {
-		C.correctAnswer()
-		C.nextAnswerer()
-		C.nextQuestion()
+		if (C.correctAnswer()) {
+			C.nextAnswerer()
+			C.nextQuestion()
+		}
 	},
 })

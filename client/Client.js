@@ -33,9 +33,9 @@ C = {
 	correctAnswer: function() {
 		var session = Sessions.findOne(Session.get('session'))
 		var student = session.answering
-		if (!student)
-			return false
 		var question = session.question
+		if (!student || !question)
+			return false
 		var answersCorrect = session.students[student._id].answersCorrect
 		var points = session.students[student._id].points
 		var data = {}
@@ -44,18 +44,20 @@ C = {
 		data['students.'+student._id+'.points'] = points + question.points
 		data['questions.'+question._id+'.correctAnswers'] = session.questions[question._id].correctAnswers + 1
 		Sessions.update(Session.get('session'), {$set: data})
+		return true
 	},
 	incorrectAnswer: function() {
 		var session = Sessions.findOne(Session.get('session'))
 		var student = session.answering
-		if (!student)
-			return false
 		var question = session.question
+		if (!student || !question)
+			return false
 		var answersIncorrect = session.students[student._id].answersIncorrect
 		var data = {}
 		data['answering'] = ""
 		data['students.'+student._id+'.answersIncorrect'] = answersIncorrect + 1
 		Sessions.update(Session.get('session'), {$set: data})
+		return true
 	},
 	nextQuestion: function() {
 
