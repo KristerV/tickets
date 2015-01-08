@@ -28,7 +28,7 @@ Template.layout.events({
 		var lang = e.currentTarget.name
 		Session.set('language', lang)
 	},
-	'click .btn[name="skip"]': function(e, tmpl) {
+	'click .btn[name="next"]': function(e, tmpl) {
 		
 		// Get all the questions
 		var session = Sessions.findOne(Session.get('session'))
@@ -41,7 +41,6 @@ Template.layout.events({
 		var rand = G.generateRandom(1, total) - 1
 		var randKey = _.keys(questions)[rand]
 		var randQuestion = questions[randKey]
-		console.log(randQuestion)
 
 		// Calculate needed values
 		var q = {}
@@ -51,6 +50,7 @@ Template.layout.events({
 		q['question'] = randQuestion.question
 
 		// Use the question
+		Sessions.update(Session.get('session'), {$set: {question: q}})
 		Session.set('question', q)
 	},
 	'submit form[name="settings"]': function(e, tmpl) {

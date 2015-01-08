@@ -19,6 +19,7 @@ Template.admin.helpers({
 		return queue
 	},
 	questionObject: function() {
-		return !!Session.get('question') ? Session.get('question') : {question: T("no_question"), points: 0, _id: null}
+		var session = Sessions.findOne(Session.get('session'))
+		return !!session.question ? session.question : {question: T("no_question"), points: 0, _id: null}
 	}
 })
