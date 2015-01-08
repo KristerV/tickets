@@ -1,12 +1,10 @@
 template(name="admin")
 	.row
-		.col-sm-3
-			.btn-group(role="group")
-				button.btn.btn-danger(type="button") 0
-				button.btn.btn-default(type="button") Nimi Täis ILGELT PIKKILGELT PIKKILGELT PIKKILGELT PIKK
-				button.btn.btn-success(type="button") +
+		.col-sm-3.queue-box
 			with answering
-				h2 {{name}}
+				.btn-group(role="group")
+					button.btn.btn-default(type="button" name="incorrect") {{name}}
+					button.btn.btn-success(type="button" name="correct") +
 			each queue
 				p {{name}}
 		.col-sm-9

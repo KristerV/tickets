@@ -14,7 +14,7 @@ Sessions.allow({
 		if ('students.'+userId+'.queue' in modify['$set']) {
 
 			// Only allow queuing if student has not exeeded allowed answers total
-			if (doc.students[userId].questionsAnswered < doc.settings.maxQuestions)
+			if (doc.students[userId].answersCorrect < doc.settings.maxQuestions)
 				return true
 		}
 	}

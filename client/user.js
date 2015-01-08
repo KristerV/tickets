@@ -17,7 +17,8 @@ Template.user.helpers({
 			return false
 
 		var maxAnswers = session.settings.maxQuestions
-		var userAnswers = session.students[Meteor.userId()].questionsAnswered
+		var student = session.students[Meteor.userId()]
+		var userAnswers = student.answersCorrect
 		if (maxAnswers > userAnswers)
 			return true
 	}
