@@ -3,6 +3,7 @@ template(name="admin")
 		.col-sm-3.queue-box
 			with answering
 				.btn-group(role="group")
+					button.btn.btn-danger.wrap(type="button" name="penalty") -1
 					button.btn.btn-default.wrap(type="button" name="incorrect") {{name}}
 					button.btn.btn-success.wrap(type="button" name="correct") +
 			each queue

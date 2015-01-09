@@ -33,4 +33,7 @@ Template.admin.events({
 			C.nextQuestion()
 		}
 	},
+	'click .queue-box button[name="penalty"]': function(e, tmpl) {
+		C.penaltyPoint()
+	},
 })

@@ -59,6 +59,19 @@ C = {
 		Sessions.update(Session.get('session'), {$set: data})
 		return true
 	},
+	penaltyPoint: function() {
+		var session = Sessions.findOne(Session.get('session'))
+		var student = session.answering
+		if (!student)
+			return false
+
+		var currentPoints = session.students[student._id].points
+
+		data = {}
+		data['students.' + student._id + '.points'] = currentPoints - 1
+
+		Sessions.update(Session.get('session'), {$set: data})
+	},
 	nextQuestion: function() {
 
 		// Get all the questions
